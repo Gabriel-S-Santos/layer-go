@@ -8,7 +8,6 @@ import (
 	"layer-go/repositories"
 )
 
-// UserService define as operações de negócio para User.
 type UserService interface {
 	RegisterUser(name, email string) (*models.User, error)
 }
@@ -17,7 +16,6 @@ type userService struct {
 	repo repositories.UserRepository
 }
 
-// NewUserService cria uma nova instância de UserService.
 func NewUserService(repo repositories.UserRepository) UserService {
 	return &userService{repo: repo}
 }
@@ -36,7 +34,6 @@ func (s *userService) RegisterUser(name, email string) (*models.User, error) {
 		Email: email,
 	}
 
-	// Persiste o usuário
 	if err := s.repo.Create(user); err != nil {
 		return nil, err
 	}

@@ -18,6 +18,5 @@ func ConnectDB() {
 		log.Fatal("Erro ao conectar ao banco:", err)
 	}
 
-	// Cria a tabela de usuários, se não existir
 	DB.AutoMigrate(&models.User{})
 }
